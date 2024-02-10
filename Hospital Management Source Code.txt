@@ -1,0 +1,97 @@
+
+
+
+          Save Code
+
+
+          SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hospitaldb;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("insert into patientab values(@patientid,@patientname,@gender,@email,@address)", con);
+            cmd.Parameters.AddWithValue("@PatientID", int.Parse(textBox1.Text));
+            cmd.Parameters.AddWithValue("@PatientName", textBox2.Text);
+            cmd.Parameters.AddWithValue("@Gender", textBox3.Text);
+            cmd.Parameters.AddWithValue("@Email", textBox4.Text);
+            cmd.Parameters.AddWithValue("@Address", textBox5.Text);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Saved Successfully!");
+
+
+
+
+
+          Add Code
+
+
+         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hospitaldb;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from patientab", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+
+
+
+
+
+          Update Code
+
+          SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hospitaldb;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update patientab set patientname=@patientname,gender=@gender,email=@email,address=@address where patientid=@patientid", con);
+            cmd.Parameters.AddWithValue("@PatientID", int.Parse(textBox1.Text));
+            cmd.Parameters.AddWithValue("@PatientName", textBox2.Text);
+            cmd.Parameters.AddWithValue("@Gender", textBox3.Text);
+            cmd.Parameters.AddWithValue("@Email", textBox4.Text);
+            cmd.Parameters.AddWithValue("@Address", textBox5.Text);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Updated Successfully!");
+
+
+
+
+
+         Delete Code
+
+
+
+         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hospitaldb;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("delete patientab where patientid=@patientid", con);
+            cmd.Parameters.AddWithValue("@PatientID", int.Parse(textBox1.Text));
+            
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Deleted Successfully!");
+
+
+
+
+        Display Code
+
+
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hospitaldb;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from paytab", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+
+
+
+        Patient_Load Code
+
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=hospitaldb;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from patientab", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
